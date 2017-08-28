@@ -1,14 +1,8 @@
 defmodule Dictionary do
-  def words_list do
-    "../assets/words.txt"
-    |> Path.expand(__DIR__)
-    |> File.read!()
-    |> String.split(~r/\n/)
-  end
 
-  def random_word do
-    words_list()
-    |> Enum.random()
-  end
+  alias Dictionary.WordList
+
+  defdelegate start,                   to: WordList
+  defdelegate random_word(words_list), to: WordList
 
 end
